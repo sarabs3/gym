@@ -7,24 +7,13 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import LoaderComponent from '../components/loader';
 import Wrapper from '../components/wrapper';
-import {Motion, spring} from 'react-motion';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ErrorBoundary from '../components/errorBoundry';
-import Reports from '../pages/reports';
-import ReportsDetail from '../pages/reports/reportsDetail.container';
 import '../pageAnimations.css';
 
 
-// Lazy load modules
-import Datalist from '../dataList';
-import Stats from '../pages/stats/Month';
-import Form from '../pages/form';
-import AddIncome from "../pages/addIncome";
-import Summary from '../pages/summary';
-import MonthSummary from "../pages/monthSummary";
-import Transections from '../pages/transections';
-import TransectionsDetail from '../pages/transectionsDetails.page';
-import Dashboard from '../pages/dashboard';
+import { Gym } from '../containers/gym';
+import { Exercise } from '../containers/Exercise';
 
 const { Header, Content } = Layout;
 
@@ -46,23 +35,8 @@ const PrivateRouteComponent = props => (
                             >
                                 <Wrapper>
                                     <Switch location={props.location}>
-                                        <Route path="/dashboard/list" component={Datalist} />
-                                        <Route path="/dashboard/page" render={()=>(
-                                        <Motion defaultStyle={{x: 0}} style={{x: spring(10)}}>
-                                            {value => <div>{value.x}</div>}
-                                        </Motion>
-                                        )} />
-                                        <Route path="/dashboard/stats" component={Stats} />
-                                        <Route path="/dashboard/form" component={Form} />
-                                        <Route path="/dashboard/weekly" component={Summary} />
-                                        <Route path="/dashboard/month" component={MonthSummary} />
-                                        <Route path="/dashboard/transections/:id" component={TransectionsDetail} />
-                                        <Route path="/dashboard/transections" component={Transections} />
-                                        <Route path="/dashboard/reports/:year/:month" component={ReportsDetail} />
-                                        <Route path="/dashboard/reports" component={Reports} />
-                                        <Route path="/dashboard/add/" component={AddIncome} />
-                                        <Route path="/dashboard/add/income" component={AddIncome} />
-                                        <Route path="/" component={Dashboard}  />
+                                        <Route path="/dashboard/:id" component={Exercise}  />
+                                        <Route path="/" component={Gym}  />
                                     </Switch>
                                 </Wrapper>
                             </CSSTransition>

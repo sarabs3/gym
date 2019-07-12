@@ -5,7 +5,7 @@
   "keywords": [],
   "main": "index.js",
   "dependencies": {
-    "antd": "^3.9.3",
+    "antd": "^3.20.1",
     "firebase": "^5.5.0",
     "moment": "^2.22.2",
     "react": "^16.6.3",
