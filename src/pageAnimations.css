@@ -23,3 +23,9 @@
 .exercies{
     padding: 0 15px;
 }
+.notification{
+    background: lemonchiffon;
+    width: 100%;
+    display: flex;
+    padding: 5px 10px;
+}

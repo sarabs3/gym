@@ -14,6 +14,7 @@ import '../pageAnimations.css';
 
 import { Gym } from '../containers/gym';
 import { Exercise } from '../containers/Exercise';
+import Schedule from '../containers/Schedule/Schedule.component';
 
 const { Header, Content } = Layout;
 
@@ -35,6 +36,7 @@ const PrivateRouteComponent = props => (
                             >
                                 <Wrapper>
                                     <Switch location={props.location}>
+                                        <Route path="/dashboard/attandance" component={Schedule}  />
                                         <Route path="/dashboard/:id" component={Exercise}  />
                                         <Route path="/" component={Gym}  />
                                     </Switch>
