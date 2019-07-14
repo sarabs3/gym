@@ -22,39 +22,47 @@ const weeks = [
 const todayStatus = (timestamp) => timestamp ? moment(timestamp).isBetween(moment().startOf('date'), moment().endOf('date')) : false;
 
 
-const WeekDays = (props) => {
-  if (!props.data) {
-    return <p>Loading...</p>
+class WeekDays extends React.Component {
+  
+  gymResponse = (gymStatus) => {
+    this.props.firebase.push(`attandance/${this.props.uid}`, { date: moment().unix()*1000, status: gymStatus });
+    this.props.history.push('/dashboard/attandance');
+  };
+
+  render = () => {
+    if (!this.props.data) {
+      return <p>Loading...</p>
+    }
+    const status = todayStatus(this.props.data[0].value.date);
+    return (
+      <div className="exercies">
+        <Row>
+          <Col span={24}>
+            {!status ? (<TodayStatus gymResponse={this.gymResponse} />
+            ) : (
+              <Fragment>
+                <p className="notification">You already updated Today's status!</p>
+                <Link to='/dashboard/attandance'>Check Attandance</Link>
+                <List
+                  dataSource={weeks}
+                  renderItem={item => (
+                    <Link to={`dashboard/${item.id}`}>
+                      <List.Item>
+                        <List.Item.Meta
+                          title={item.exercise}
+                          description={item.day}
+                        />
+                      </List.Item>
+                    </Link>
+                  )}
+                />
+                </Fragment>
+              )}
+          </Col>
+        </Row>
+      </div>
+    );
   }
-  const status = todayStatus(props.data[0].value.date);
-  return (
-    <div className="exercies">
-      <Row>
-        <Col span={24}>
-          {!status ? (<TodayStatus gymResponse={(gymStatus) => props.firebase.push(`attandance/${props.uid}`, { date: moment().unix()*1000, status: gymStatus })} />
-          ) : (
-            <Fragment>
-              <p className="notification">You already updated Today's status!</p>
-              <Link to='/dashboard/attandance'>Check Attandance</Link>
-              <List
-                dataSource={weeks}
-                renderItem={item => (
-                  <Link to={`dashboard/${item.id}`}>
-                    <List.Item>
-                      <List.Item.Meta
-                        title={item.exercise}
-                        description={item.day}
-                      />
-                    </List.Item>
-                  </Link>
-                )}
-              />
-              </Fragment>
-            )}
-        </Col>
-      </Row>
-    </div>
-  );
 }
 
 const WeekSummary = (props) => (
