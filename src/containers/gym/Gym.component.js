@@ -23,10 +23,10 @@ const todayStatus = (timestamp) => timestamp ? moment(timestamp).isBetween(momen
 
 
 const WeekDays = (props) => {
-  let status = false;
-  if (props.data) {
-    status = todayStatus(props.data[0].value.date);
+  if (!props.data) {
+    return <p>Loading...</p>
   }
+  const status = todayStatus(props.data[0].value.date);
   return (
     <div className="exercies">
       <Row>
@@ -35,6 +35,7 @@ const WeekDays = (props) => {
           ) : (
             <Fragment>
               <p className="notification">You already updated Today's status!</p>
+              <Link to='/dashboard/attandance'>Check Attandance</Link>
               <List
                 dataSource={weeks}
                 renderItem={item => (
