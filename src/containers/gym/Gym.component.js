@@ -8,14 +8,14 @@ import { firebaseConnect } from 'react-redux-firebase';
 import moment from 'moment';
 
 const weeks = [
-  { day: 'Mon', exercise: 'Rest', id: 5 },
-  { day: 'Tues', exercise: 'Lower Body Pull', id: 0 },
-  { day: 'Wed', exercise: 'Uper Body Push', id: 1 },
-  { day: 'Thu', exercise: 'Rest', id: 6 },
-  { day: 'Fri', exercise: 'Lower Body Push', id: 2 },
-  { day: 'Sat', exercise: 'Uper Body Pull', id: 3 },
-  { day: 'Sun', exercise: 'Metabolic Conditioning Workouts', id: 4, desc: 'Add these training methods popularised by CrossFit to break up the monotony of body part splits' },
-  { day: 'any', exercise: 'Obliques', id: 7 }
+  { day: 'Mon', exercise: 'Rest', id: 0 },
+  { day: 'Tues', exercise: 'Lower Body Pull', id: 2 },
+  { day: 'Wed', exercise: 'Uper Body Push', id: 3 },
+  { day: 'Thu', exercise: 'Rest', id: 0 },
+  { day: 'Fri', exercise: 'Lower Body Push', id: 5 },
+  { day: 'Sat', exercise: 'Uper Body Pull', id: 6 },
+  { day: 'Sun', exercise: 'Metabolic Conditioning Workouts', id: 7, desc: 'Add these training methods popularised by CrossFit to break up the monotony of body part splits' },
+  { day: 'any', exercise: 'Obliques', id: 4 }
 ];
 
 // check timestamp is for Today
@@ -30,10 +30,10 @@ class WeekDays extends React.Component {
   };
 
   render = () => {
-    if (!this.props.data) {
-      return <p>Loading...</p>
+    let status = false;
+    if (this.props.data) {
+      status = todayStatus(this.props.data[0].value.date);
     }
-    const status = todayStatus(this.props.data[0].value.date);
     return (
       <div className="exercies">
         <Row>
