@@ -1,0 +1,10 @@
+[
+    { "day": "Mon", "exercise": "Rest", "id": 0 },
+    { "day": "Tues", "exercise": "Lower Body Pull", "id": 2 },
+    { "day": "Wed", "exercise": "Uper Body Push", "id": 3 },
+    { "day": "Thu", "exercise": "Rest", "id": 0 },
+    { "day": "Fri", "exercise": "Lower Body Push", "id": 5 },
+    { "day": "Sat", "exercise": "Uper Body Pull", "id": 6 },
+    { "day": "Sun", "exercise": "Metabolic Conditioning Workouts", "id": 7, "desc": "Add these training methods popularised by CrossFit to break up the monotony of body part splits" },
+    { "day": "any", "exercise": "Obliques", "id": 4 }
+]
