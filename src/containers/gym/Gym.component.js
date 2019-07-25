@@ -23,25 +23,33 @@ const todayStatus = (timestamp) => timestamp ? moment(timestamp).isBetween(momen
 
 
 class WeekDays extends React.Component {
+  state = {
+    skip: false,
+    today: moment().day(),
+  };
   
   gymResponse = (gymStatus) => {
-    this.props.firebase.push(`attandance/${this.props.uid}`, { date: moment().unix()*1000, status: gymStatus });
-    this.props.history.push('/dashboard/attandance');
+    // this.props.firebase.push(`attandance/${this.props.uid}`, { date: moment().unix()*1000, status: gymStatus });
+    this.props.history.push(`/dashboard/attandance/${this.state.today}`);
   };
+  skip = () => {
+    this.setState({ skip: true });
+  }
 
   render = () => {
     let status = false;
     if (this.props.data) {
       status = todayStatus(this.props.data[0].value.date);
     }
+    const { skip } = this.state;
     return (
       <div className="exercies">
         <Row>
           <Col span={24}>
-            {!status ? (<TodayStatus gymResponse={this.gymResponse} />
+            {!status && !skip ? (<TodayStatus skip={this.skip} gymResponse={this.gymResponse} />
             ) : (
               <Fragment>
-                <p className="notification">You already updated Today's status!</p>
+                {!skip && <p className="notification">You already updated Today's status!</p>}
                 <Link to='/dashboard/attandance'>Check Attandance</Link>
                 <List
                   dataSource={weeks}
