@@ -4,6 +4,7 @@ import {Card, Input, Select, List, Button, Row, Col} from 'antd';
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firebaseConnect } from "react-redux-firebase";
+import CommonLayout from "../../layouts/common";
 const { Option } = Select;
 class AddWorkout extends React.Component {
     state = {
@@ -32,14 +33,15 @@ class AddWorkout extends React.Component {
             active: true,
         }],
         todo:[],
-        
     }
     handleChange = (key, value) => {
         this.setState((state) => ({ formData: { ...state.formData, [key]: value } }));
     }
-    formSubmit = () => {
-        console.log('xyz')
-        this.props.addWorkout({title: this.state.formData.title, desc: this.state.formData.desc, day: this.state.formData.day});
+    formSubmit = (e) => {
+        e.preventDefault();
+        this.props.firebase.push('/exercises', { exercise: this.state.formData.title })
+        .then(() => this.props.history.push('/workouts'))
+        .catch((err) => console.log('error', err));
 
     }
     handleDays = (value) => {
@@ -58,21 +60,23 @@ class AddWorkout extends React.Component {
     render = () => {
         const { formData , options} = this.state;
         return (
-            <div className="App">
-            <Row>
-                <Col span={12}>
-                <Card title="Add Workouts">
-                    <form onSubmit={this.formSubmit}>
-                        <div style={{ marginBottom: 16 }}>
-                            <Input placeholder="Workout Name" type="text" name="title" value={formData.title} onChange={(e) => this.handleChange('title', e.target.value)} />
-                        </div>
-                        <Button onClick={this.formSubmit} type="submit">Submit</Button>
-                        <Button onClick={() => this.props.history.push('/workouts')} type="button">Cancel</Button>
-                    </form>
-                    </Card>
-                </Col>
-                </Row>
-            </div>
+            <CommonLayout>
+                <div className="App">
+                <Row>
+                    <Col span={12}>
+                    <Card title="Add Workouts">
+                        <form onSubmit={this.formSubmit}>
+                            <div style={{ marginBottom: 16 }}>
+                                <Input placeholder="Workout Name" type="text" name="title" value={formData.title} onChange={(e) => this.handleChange('title', e.target.value)} />
+                            </div>
+                            <Button onClick={this.formSubmit} type="submit">Submit</Button>
+                            <Button onClick={() => this.props.history.push('/workouts')} type="button">Cancel</Button>
+                        </form>
+                        </Card>
+                    </Col>
+                    </Row>
+                </div>
+            </CommonLayout>
         )
     }
 };

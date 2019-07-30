@@ -21,7 +21,7 @@ export default (props) => (
           <Route path="/plans/add" component={AddPlan}  />
           <Route path="/plans/:id" component={Plans}  />
           <Route path="/plans/" component={PlansList}  />
-          <Route path="/Workout/" component={AddWorkout}  />
+          <Route path="/workouts/add" component={AddWorkout}  />
           <Route path="/workouts/" component={Workout}  />
           <UnProtectedRoute path="/" component={Home}  />
         </Switch>

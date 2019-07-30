@@ -4,6 +4,7 @@ import {Card, Input, Select, List, Button, Row, Col} from 'antd';
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firebaseConnect } from "react-redux-firebase";
+import CommonLayout from "../../layouts/common";
 const { Option } = Select;
 class AddPlan extends React.Component {
     state = {
@@ -58,43 +59,45 @@ class AddPlan extends React.Component {
     render = () => {
         const { formData , options} = this.state;
         return (
-            <div className="App">
-            <Row>
-                <Col span={12}>
-                <Card title="Add Plan">
-                    <form onSubmit={this.formSubmit}>
-                        <div style={{ marginBottom: 16 }}>
-                            <Input placeholder="Plan Name" type="text" name="title" value={formData.title} onChange={(e) => this.handleChange('title', e.target.value)} />
-                        </div>
-                        <div style={{ marginBottom: 16 }}>
-                            <Input placeholder="Day" type="text" name="day" value={formData.title} onChange={(e) => this.handleChange('day', e.target.value)} />
-                        </div>
-                        <div style={{ marginBottom: 16 }}>
-                            <Card title="Exercise 1">
-                                <div style={{ marginBottom: 16 }}>
-                                    <Select defaultValue={1}>
-                                        <Option value={1}>Planks</Option>
-                                        <Option value={2}>Push Ups</Option>
-                                    </Select>
-                                </div>
-                                <div style={{ marginBottom: 16 }}>
-                                    <Input placeholder="Sets" />
-                                </div>
-                                <div style={{ marginBottom: 16 }}>
-                                    <Input placeholder="Reps" />
-                                </div>
-                            </Card>
-                        </div>
-                        <div style={{ marginBottom: 16 }}>
-                            <Button type="primary" block>Add Exercise</Button>
-                        </div>
-                        <Button onClick={this.formSubmit} type="submit">Submit</Button>
-                        <Button onClick={() => this.props.history.push('/plans')} type="button">Cancel</Button>
-                    </form>
-                    </Card>
-                </Col>
-                </Row>
-            </div>
+            <CommonLayout>
+                <div className="App">
+                <Row>
+                    <Col span={12}>
+                    <Card title="Add Plan">
+                        <form onSubmit={this.formSubmit}>
+                            <div style={{ marginBottom: 16 }}>
+                                <Input placeholder="Plan Name" type="text" name="title" value={formData.title} onChange={(e) => this.handleChange('title', e.target.value)} />
+                            </div>
+                            <div style={{ marginBottom: 16 }}>
+                                <Input placeholder="Day" type="text" name="day" value={formData.title} onChange={(e) => this.handleChange('day', e.target.value)} />
+                            </div>
+                            <div style={{ marginBottom: 16 }}>
+                                <Card title="Exercise 1">
+                                    <div style={{ marginBottom: 16 }}>
+                                        <Select defaultValue={1}>
+                                            <Option value={1}>Planks</Option>
+                                            <Option value={2}>Push Ups</Option>
+                                        </Select>
+                                    </div>
+                                    <div style={{ marginBottom: 16 }}>
+                                        <Input placeholder="Sets" />
+                                    </div>
+                                    <div style={{ marginBottom: 16 }}>
+                                        <Input placeholder="Reps" />
+                                    </div>
+                                </Card>
+                            </div>
+                            <div style={{ marginBottom: 16 }}>
+                                <Button type="primary" block>Add Exercise</Button>
+                            </div>
+                            <Button onClick={this.formSubmit} type="submit">Submit</Button>
+                            <Button onClick={() => this.props.history.push('/plans')} type="button">Cancel</Button>
+                        </form>
+                        </Card>
+                    </Col>
+                    </Row>
+                </div>
+            </CommonLayout>
         )
     }
 };

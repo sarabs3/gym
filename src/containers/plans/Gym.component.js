@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import moment from 'moment';
+import CommonLayout from '../../layouts/common';
 
 const weeks = [
   { day: 'Mon', exercise: 'Rest', id: 0 },
@@ -35,28 +36,30 @@ class WeekDays extends React.Component {
       status = todayStatus(this.props.data[0].value.date);
     }
     return (
-      <div className="exercies">
-        <Button onClick={this.props.history.goBack}>
-            <Icon type="left" />
-        </Button>
-        <Row>
-          <Col span={24}>
-              <List
-                dataSource={weeks}
-                renderItem={item => (
-                  <Link to={`/plans/details/${item.id}`}>
-                    <List.Item>
-                      <List.Item.Meta
-                        title={item.exercise}
-                        description={item.day}
-                      />
-                    </List.Item>
-                  </Link>
-                )}
-              />
-          </Col>
-        </Row>
-      </div>
+      <CommonLayout>
+        <div className="exercies">
+          <Button onClick={this.props.history.goBack}>
+              <Icon type="left" />
+          </Button>
+          <Row>
+            <Col span={24}>
+                <List
+                  dataSource={weeks}
+                  renderItem={item => (
+                    <Link to={`/plans/details/${item.id}`}>
+                      <List.Item>
+                        <List.Item.Meta
+                          title={item.exercise}
+                          description={item.day}
+                        />
+                      </List.Item>
+                    </Link>
+                  )}
+                />
+            </Col>
+          </Row>
+        </div>
+      </CommonLayout>
     );
   }
 }

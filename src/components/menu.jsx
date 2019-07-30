@@ -14,6 +14,8 @@ class Navigation extends React.Component {
                     style={{lineHeight: '64px'}}
                     >
                         <Menu.Item><Link to='/dashboard'>Home</Link></Menu.Item>
+                        <Menu.Item><Link to='/workouts'>Workouts</Link></Menu.Item>
+                        <Menu.Item><Link to='/plans'>Plans</Link></Menu.Item>
                         <Menu.Item><Button><Link to='/logout'>Logout</Link></Button></Menu.Item>
                     </Menu>
                 ): (
@@ -23,6 +25,8 @@ class Navigation extends React.Component {
                         style={{lineHeight: '64px'}}
                     >
                         <Menu.Item><Link to='/dashboard'>Home</Link></Menu.Item>
+                        <Menu.Item><Link to='/workouts'>Workouts</Link></Menu.Item>
+                        <Menu.Item><Link to='/plans'>Plans</Link></Menu.Item>
                         <Menu.Item><Button><Link to='/logout'>Logout</Link></Button></Menu.Item>
                     </Menu>
                     )}
