@@ -30,7 +30,7 @@ class WeekDays extends React.Component {
   
   gymResponse = (gymStatus) => {
     // this.props.firebase.push(`attandance/${this.props.uid}`, { date: moment().unix()*1000, status: gymStatus });
-    this.props.history.push(`/dashboard/attandance/${this.state.today}`);
+    this.props.history.push(`/dashboard/attandance/`);
   };
   skip = () => {
     this.setState({ skip: true });

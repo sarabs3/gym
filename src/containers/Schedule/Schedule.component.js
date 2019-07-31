@@ -3,6 +3,7 @@ import { List, Icon, Card } from 'antd';
 import moment from 'moment';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 import { firebaseConnect } from 'react-redux-firebase';
 
 class Schedule extends React.Component {
@@ -22,7 +23,7 @@ class Schedule extends React.Component {
                     renderItem={(item) => {
                         const { date, status } = item.value;
                         return (
-                        <List.Item>
+                        <List.Item actions={[<Link to="/dashboard/attandance/3">Add Data</Link>]}>
                             <List.Item.Meta
                                 title={moment(date).format('MM-DD-YYYY')}
                                 description={status ? <Icon type="check" /> : <Icon type="close" />}

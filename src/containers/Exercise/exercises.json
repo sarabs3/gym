@@ -20,97 +20,112 @@
             "sets": 3 },
         { "exercise": "Military press", "id": 3, "set": "Sets 4 Reps 8 Rest 60-90 seconds", "desc": "",
             "sets": 4
-                },
-                { "exercise": "Dips", "id": 4, "set": "Sets 4 Reps 8-12 Rest 60-90 seconds", "desc": "",
-                    "sets": 4
-                },
-                { "exercise": "Finisher: 10min AMRAP", "id": 5, "set": "Hang power clean: Reps 10 && Burpee over bar: Reps 10", "desc": ""
-                }
-            ],
-            "5": [
-                { "exercise": "Front squat", "id": 1, "set": "Sets 5 Reps 5 Rest 2-3 minutes", "desc": "",
-                    "sets": 5
-                },
-                { "exercise": "Barbell lunge", "id": 2, "set": "Sets 3 Reps 10 Rest 2-3 minutes", "desc": "",
-                    "sets": 3
-                },
-                { "exercise": "Bench pistol squat", "id": 3, "set": "Sets 3 Reps 6 each side Rest 60-90 seconds", "desc": "",
-                    "sets": 3
-                },
-                { "exercise": "Turkish get-up", "id": 4, "set": "Sets 3 Reps 3 each side Rest 60-90 seconds", "desc": "",
-                    "sets": 3
-                }
-            ],
-            "6": [
-                { "exercise": "Power snatch", "id": 1, "set": "Sets 3 Reps 3 Rest 2-3 minutes", "desc": "",
-                    "sets": 3
-                },
-                { "exercise": "Pull-up", "id": 2, "set": "Sets 4 Reps 10 Rest 60-90 seconds", "desc": "",
-                    "sets": 4
-                },
-                { "exercise": "Pendlay row", "id": 3, "set": "Sets 4 Reps 10 Rest 60-90 seconds", "desc": "",
-                    "sets": 4
-                },
-                { "exercise": "Kettlebell clean and press", "id": 4, "set": "Sets 3 Reps 10 Rest 60-90 seconds", "desc": "",
-                    "sets": 3
-                },
-                { "exercise": "Finisher: 3 RFT", "id": 5, "set": "Thruster: Reps 21/15/9 && Jump over bench: Reps 21/15/9", "desc": "Do 21 thrusters, then 21 reps jumping over the bench. Next do 15 reps of each, then nine. Race the clock and rest as needed.",
-                    "sets": 0
-                }
-            ],
-            "7": [
-                { "exercise": "EMOM (every minute on the minute)", "id": 1, "set": "Do a set number of reps at regular intervals on a running clock, usually every minute, on the minute. This tests your powers of recovery.  &&      Do it Three clean and jerks every minute for ten minutes", "desc": "",
-                    "sets": 0
-                },
-                { "exercise": "AMRAP (as many reps as possible)", "id": 2, "set": "Complete as many rounds as possible of a given exercise combination within a given time. It builds stamina and burns fat.  &&      Do it 12 minutes of eight front squats and eight push presses", "desc": "",
-                    "sets": 0
-                },
-                { "exercise": "RFT (rounds for time)", "id": 3, "set": "Complete a given number of rounds of a circuit as fast as possible. Short rest periods develop long-lasting muscle endurance.  &&      Do it Eight rounds of 15 kettlebell swings, ten KB clean and presses and five KB snatches", "desc": "",
-                    "sets": 0
-                },
-                {
-                    "exercise": "Chipper",
-                    "id": 4,
-                    "set": "A series of exercises, usually high reps. Complete one round for time. A high-volume, muscle building grind. &&     Do it 100 press-ups,                     75 bodyweight squats, 50 burpees, 25 pull-ups", "desc": "",
-                    "sets": 0
-                },
-                { "exercise": "Ladder", "id": 4, "set": "One or more movements, increasing or decreasing workload over time. Build intensity for a challenging warm-up.   &&     Do it One to ten reps of goblet squats alternating with ten to one reps of pull-ups", "desc": "",
-                    "sets": 0
-                },
-                { "exercise": "Tabata", "id": 4, "set": "Do eight rounds of high-intensity intervals, alternating 20 seconds’ effort with ten seconds’ rest. A real fat-eviscerating finisher.   &&    Do it: Row for max distance", "desc": "",
-                    "sets": 0
-                }
-            ],
-            "4": [
-                { "exercise": "Side planks", "id": 1, "set": "", "desc": ""
-                },
-                { "exercise": "Single Leg Side Planks", "id": 2, "set": "", "desc": ""
-                },
-                { "exercise": "Side plank dips", "id": 3, "set": "", "desc": ""
-                },
-                { "exercise": "Russian Twist", "id": 4, "set": "", "desc": ""
-                },
-                { "exercise": "Spiderman Plank", "id": 5, "set": "", "desc": ""
-                },
-                { "exercise": "T-Rotation", "id": 6, "set": "", "desc": ""
-                },
-                { "exercise": "Bird Dog Crunch", "id": 7, "set": "", "desc": ""
-                },
-                { "exercise": "Medicine Ball Wall Ball", "id": 8, "set": "", "desc": ""
-                },
-                { "exercise": "Side Bends", "id": 9, "set": "", "desc": ""
-                },
-                { "exercise": "Standing Side Crunch", "id": 10, "set": "", "desc": ""
-                },
-                { "exercise": "Sitting Side crunch", "id": 11, "set": "", "desc": ""
-                },
-                { "exercise": "Single Arm Farmers Carry", "id": 12, "set": "", "desc": ""
-                },
-                { "exercise": "Hanging Hurdle", "id": 13, "set": "", "desc": ""
-                },
-                { "exercise": "Hanging Oblique Raise", "id": 14, "set": "", "desc": ""
-                },
-                { "exercise": "Half kneeling cable chops", "id": 15, "set": "", "desc": ""
-                }
-            ]
+        },
+        { "exercise": "Dips", "id": 4, "set": "Sets 4 Reps 8-12 Rest 60-90 seconds", "desc": "",
+            "sets": 4
+        },
+        { "exercise": "Finisher: 10min AMRAP", "id": 5, "set": "Hang power clean: Reps 10 && Burpee over bar: Reps 10", "desc": ""
         }
+    ],
+    "4": [
+        { "exercise": "Side planks", "id": 1, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Single Leg Side Planks", "id": 2, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Side plank dips", "id": 3, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Russian Twist", "id": 4, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Spiderman Plank", "id": 5, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "T-Rotation", "id": 6, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Bird Dog Crunch", "id": 7, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Medicine Ball Wall Ball", "id": 8, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Side Bends", "id": 9, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Standing Side Crunch", "id": 10, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Sitting Side crunch", "id": 11, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Single Arm Farmers Carry", "id": 12, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Hanging Hurdle", "id": 13, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Hanging Oblique Raise", "id": 14, "set": "", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Half kneeling cable chops", "id": 15, "set": "", "desc": "",
+            "sets": 1
+        }
+    ],
+    "5": [
+        { "exercise": "Front squat", "id": 1, "set": "Sets 5 Reps 5 Rest 2-3 minutes", "desc": "",
+            "sets": 5
+        },
+        { "exercise": "Barbell lunge", "id": 2, "set": "Sets 3 Reps 10 Rest 2-3 minutes", "desc": "",
+            "sets": 3
+        },
+        { "exercise": "Bench pistol squat", "id": 3, "set": "Sets 3 Reps 6 each side Rest 60-90 seconds", "desc": "",
+            "sets": 3
+        },
+        { "exercise": "Turkish get-up", "id": 4, "set": "Sets 3 Reps 3 each side Rest 60-90 seconds", "desc": "",
+            "sets": 3
+        }
+    ],
+    "6": [
+        { "exercise": "Power snatch", "id": 1, "set": "Sets 3 Reps 3 Rest 2-3 minutes", "desc": "",
+            "sets": 3
+        },
+        { "exercise": "Pull-up", "id": 2, "set": "Sets 4 Reps 10 Rest 60-90 seconds", "desc": "",
+            "sets": 4
+        },
+        { "exercise": "Pendlay row", "id": 3, "set": "Sets 4 Reps 10 Rest 60-90 seconds", "desc": "",
+            "sets": 4
+        },
+        { "exercise": "Kettlebell clean and press", "id": 4, "set": "Sets 3 Reps 10 Rest 60-90 seconds", "desc": "",
+            "sets": 3
+        },
+        { "exercise": "Finisher: 3 RFT", "id": 5, "set": "Thruster: Reps 21/15/9 && Jump over bench: Reps 21/15/9", "desc": "Do 21 thrusters, then 21 reps jumping over the bench. Next do 15 reps of each, then nine. Race the clock and rest as needed.",
+            "sets": 1
+        }
+    ],
+    "7": [
+        { "exercise": "EMOM (every minute on the minute)", "id": 1, "set": "Do a set number of reps at regular intervals on a running clock, usually every minute, on the minute. This tests your powers of recovery.  &&      Do it Three clean and jerks every minute for ten minutes", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "AMRAP (as many reps as possible)", "id": 2, "set": "Complete as many rounds as possible of a given exercise combination within a given time. It builds stamina and burns fat.  &&      Do it 12 minutes of eight front squats and eight push presses", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "RFT (rounds for time)", "id": 3, "set": "Complete a given number of rounds of a circuit as fast as possible. Short rest periods develop long-lasting muscle endurance.  &&      Do it Eight rounds of 15 kettlebell swings, ten KB clean and presses and five KB snatches", "desc": "",
+            "sets": 1
+        },
+        {
+            "exercise": "Chipper",
+            "id": 4,
+            "set": "A series of exercises, usually high reps. Complete one round for time. A high-volume, muscle building grind. &&     Do it 100 press-ups,                     75 bodyweight squats, 50 burpees, 25 pull-ups", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Ladder", "id": 4, "set": "One or more movements, increasing or decreasing workload over time. Build intensity for a challenging warm-up.   &&     Do it One to ten reps of goblet squats alternating with ten to one reps of pull-ups", "desc": "",
+            "sets": 1
+        },
+        { "exercise": "Tabata", "id": 4, "set": "Do eight rounds of high-intensity intervals, alternating 20 seconds’ effort with ten seconds’ rest. A real fat-eviscerating finisher.   &&    Do it: Row for max distance", "desc": "",
+            "sets": 1
+        }
+    ]
+}
