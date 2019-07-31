@@ -10,12 +10,15 @@ import { Home } from "./containers/Home";
 import { Plans, PlansList, AddPlan } from "./containers/plans";
 import { Exercise } from './containers/Exercise';
 import { Workout, AddWorkout } from './containers/workouts';
+import ExerciseInput from './containers/Exercise/ExerciseInput.component';
 
 export default (props) => (
   <Route render={({location}) => (
         <Switch location={location}>
           <Route path="/logout" component={Logout} />
-          <Route path="/dashboard" component={PrivateRoute} />
+          <Route path="/dashboard/attandance/:id" component={ExerciseInput} />
+          <Route path="/dashboard" component={PrivateRoute} />                                        <Route path="/dashboard/attandance/:id" component={ExerciseInput} />
+
           <UnProtectedRoute path="/login" component={Login}  />
           <UnProtectedRoute path="/plans/details/:id" component={Exercise}  />
           <Route path="/plans/add" component={AddPlan}  />
