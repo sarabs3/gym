@@ -15,6 +15,12 @@ class AddPlan extends React.Component {
             day: [],
             active: false,
         },
+        monday: {
+            exercise: 1,
+        },
+        tuesday: {
+            exercise: 1,
+        },
         options: [{
             id: 1,
             day: 'Sunday',
@@ -36,10 +42,27 @@ class AddPlan extends React.Component {
         
     }
     handleChange = (key, value) => {
-        this.setState((state) => ({ formData: { ...state.formData, [key]: value } }));
+        this.setState({ [key]: value });
     }
     formSubmit = () => {
-        console.log('xyz')
+        const payload = {
+            name: this.state.title,
+            exercises: [
+                {
+                    ...this.state.monday,
+                    day: 'Monday',
+                    exerciseName: this.props.exercises.find((ex) => ex.key === this.state.monday.exercise ).value.exercise,
+                },
+                {
+                    ...this.state.tuesday,
+                    day: 'Tuesday',
+                    exerciseName: this.props.exercises.find((ex) => ex.key === this.state.tuesday.exercise ).value.exercise,
+                }
+            ],
+        };
+        console.log('xyz', payload);
+        this.props.firebase.push('/plans', payload);
+        return;
         this.props.addWorkout({title: this.state.formData.title, desc: this.state.formData.desc, day: this.state.formData.day});
 
     }
@@ -57,36 +80,58 @@ class AddPlan extends React.Component {
         this.setState((state) => ({ formData: { ...state.formData, day }, options }));
     }
     render = () => {
-        const { formData , options} = this.state;
+        const { formData , options, monday, tuesday} = this.state;
+        const { exercises = [] } = this.props;
         return (
             <CommonLayout>
                 <div className="App">
                 <Row>
-                    <Col span={12}>
+                    <Col span={24}>
                     <Card title="Add Plan">
                         <form onSubmit={this.formSubmit}>
                             <div style={{ marginBottom: 16 }}>
                                 <Input placeholder="Plan Name" type="text" name="title" value={formData.title} onChange={(e) => this.handleChange('title', e.target.value)} />
                             </div>
-                            <div style={{ marginBottom: 16 }}>
-                                <Input placeholder="Day" type="text" name="day" value={formData.title} onChange={(e) => this.handleChange('day', e.target.value)} />
-                            </div>
-                            <div style={{ marginBottom: 16 }}>
-                                <Card title="Exercise 1">
+                            <Card title="Monday">
+                                <div style={{ marginBottom: 16 }}>
+                                    <Card title="Exercise 1">
+                                        <div style={{ marginBottom: 16 }}>
+                                            <Select defaultValue={monday.exercise} onChange={(e) => this.setState((state) => ({ monday: { ...state.monday, exercise: e } }))}>
+                                                {exercises.map(({key, value}) => (
+                                                    <Option value={key}>{value.exercise}</Option>
+                                                ))}
+                                                <Option value={2}>Push Ups</Option>
+                                            </Select>
+                                        </div>
+                                        <div style={{ marginBottom: 16 }}>
+                                            <Input value={monday.set} onChange={({target: {value}}) => this.setState((state) => ({ monday: { ...state.monday, set: value } }))} placeholder="Sets" />
+                                        </div>
+                                        <div style={{ marginBottom: 16 }}>
+                                            <Input value={monday.reps} onChange={({target: {value}}) => this.setState((state) => ({ monday: { ...state.monday, reps: value } }))} value={monday.reps} placeholder="Reps" />
+                                        </div>
+                                    </Card>
+                                </div>
+                            </Card>
+                            <Card title="Tuesday">
+                                <div style={{ marginBottom: 16 }}>
+                                    <Card title="Exercise 1">
                                     <div style={{ marginBottom: 16 }}>
-                                        <Select defaultValue={1}>
-                                            <Option value={1}>Planks</Option>
-                                            <Option value={2}>Push Ups</Option>
-                                        </Select>
-                                    </div>
-                                    <div style={{ marginBottom: 16 }}>
-                                        <Input placeholder="Sets" />
-                                    </div>
-                                    <div style={{ marginBottom: 16 }}>
-                                        <Input placeholder="Reps" />
-                                    </div>
-                                </Card>
-                            </div>
+                                            <Select defaultValue={tuesday.exercise} onChange={(e) => this.setState((state) => ({ tuesday: { ...state.tuesday, exercise: e } }))}>
+                                                {exercises.map(({key, value}) => (
+                                                    <Option value={key}>{value.exercise}</Option>
+                                                ))}
+                                                <Option value={2}>Push Ups</Option>
+                                            </Select>
+                                        </div>
+                                        <div style={{ marginBottom: 16 }}>
+                                            <Input value={tuesday.set} onChange={({target: {value}}) => this.setState((state) => ({ tuesday: { ...state.tuesday, set: value } }))} placeholder="Sets" />
+                                        </div>
+                                        <div style={{ marginBottom: 16 }}>
+                                            <Input value={tuesday.reps} onChange={({target: {value}}) => this.setState((state) => ({ tuesday: { ...state.tuesday, reps: value } }))} value={tuesday.reps} placeholder="Reps" />
+                                        </div>
+                                    </Card>
+                                </div>
+                            </Card>
                             <div style={{ marginBottom: 16 }}>
                                 <Button type="primary" block>Add Exercise</Button>
                             </div>
@@ -111,6 +156,11 @@ const enhancer = compose(
                     path: `plans/`,
                     storeAs: 'plans',
                     queryParams: []
+                },
+                {
+                    path: `exercises/`,
+                    storeAs: 'exercises',
+                    queryParams: []
                 }
             ]
         )
@@ -118,11 +168,15 @@ const enhancer = compose(
     connect(
         ({ firebase }) => ({
             plans: firebase.ordered.plans,
+            exercises: firebase.ordered.exercises,
             uid: firebase.auth.uid
         })
     )
 );
 
 
+AddPlan.defaultProps = {
+    exercises: [],
+};
 // Container
 export default enhancer(AddPlan)
