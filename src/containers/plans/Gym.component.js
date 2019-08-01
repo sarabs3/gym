@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { List, Row, Col, Button, Icon } from 'antd';
+import { List, Row, Col, Button, Icon, Card } from 'antd';
 import TodayStatus from '../TodayStatus/TodayStatus.component';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -31,10 +31,7 @@ class WeekDays extends React.Component {
   };
 
   render = () => {
-    let status = false;
-    if (this.props.data) {
-      status = todayStatus(this.props.data[0].value.date);
-    }
+    const { data } = this.props;
     return (
       <CommonLayout>
         <div className="exercies">
@@ -43,19 +40,16 @@ class WeekDays extends React.Component {
           </Button>
           <Row>
             <Col span={24}>
-                <List
-                  dataSource={weeks}
-                  renderItem={item => (
-                    <Link to={`/plans/details/${item.id}`}>
-                      <List.Item>
-                        <List.Item.Meta
-                          title={item.exercise}
-                          description={item.day}
-                        />
-                      </List.Item>
-                    </Link>
-                  )}
-                />
+                <Card title={data.name} >
+                  {data.exercises && data.exercises.map((item) => (
+                    <div>
+                      <p>{item.day}</p>
+                      <p>{item.exerciseName}</p>
+                      <p>{item.reps}</p>
+                      <p>{item.sets}</p>
+                    </div>
+                  ))}
+                </Card>
             </Col>
           </Row>
         </div>
@@ -76,16 +70,15 @@ const enhancer = compose(
     props => (
       [
         {
-          path: `attandance/${props.uid}`,
-          storeAs: 'attandance',
-          queryParams: ['limitToLast=1']
+          path: `plans/${props.match.params.id}`,
+          storeAs: 'plansDetails',
         }
       ]
     )
   ),
   connect(
     ({ firebase }) => ({
-      data: firebase.ordered.attandance,
+      data: firebase.data.plansDetails,
       uid: firebase.auth.uid
     })
   )
@@ -93,7 +86,12 @@ const enhancer = compose(
 // Attach the firebase data to the component.
 const WeekSummaryEnhancer = enhancer(WeekSummary);
 
-
+WeekSummary.defaultProps = {
+  data: {
+    name: '',
+    exercises: [],
+  },
+};
 // Container
 export default connect(
   ({ firebase }) => ({
