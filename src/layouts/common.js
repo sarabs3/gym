@@ -20,7 +20,7 @@ CommonLayout.propTypes = {
     children: PropTypes.node,
 };
 CommonLayout.defaultProps = {
-    auth: false,
+    auth: true,
     children: null,
 };
 

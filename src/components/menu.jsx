@@ -53,6 +53,6 @@ Navigation.propTypes = {
     auth: PropTypes.bool,
 };
 Navigation.defaultProps = {
-    auth: false,
+    auth: true,
 };
 export default Navigation;
