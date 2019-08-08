@@ -29,7 +29,7 @@ class WeekDays extends React.Component {
   };
   
   gymResponse = (gymStatus) => {
-    // this.props.firebase.push(`attandance/${this.props.uid}`, { date: moment().unix()*1000, status: gymStatus });
+    this.props.firebase.push(`attandance/${this.props.uid}`, { date: moment().unix()*1000, status: gymStatus });
     this.props.history.push(`/dashboard/attandance/`);
   };
   skip = () => {
@@ -42,6 +42,13 @@ class WeekDays extends React.Component {
       status = todayStatus(this.props.data[0].value.date);
     }
     const { skip } = this.state;
+    if (!this.props.myplans) {
+      return (
+        <div className="exercies">
+          <p>You haven't selected any plans yet.</p>
+        </div>
+      );
+    }
     return (
       <div className="exercies">
         <Row>
@@ -51,21 +58,21 @@ class WeekDays extends React.Component {
               <Fragment>
                 {!skip && <p className="notification">You already updated Today's status!</p>}
                 <Link to='/dashboard/attandance'>Check Attandance</Link>
-                <List
-                  dataSource={weeks}
-                  renderItem={item => (
-                    <Link to={`dashboard/${item.id}`}>
-                      <List.Item>
-                        <List.Item.Meta
-                          title={item.exercise}
-                          description={item.day}
-                        />
-                      </List.Item>
-                    </Link>
-                  )}
-                />
+                  <List
+                    dataSource={weeks}
+                    renderItem={item => (
+                      <Link to={`dashboard/${item.id}`}>
+                        <List.Item>
+                          <List.Item.Meta
+                            title={item.exercise}
+                            description={item.day}
+                          />
+                        </List.Item>
+                      </Link>
+                    )}
+                  />
                 </Fragment>
-              )}
+            )}
           </Col>
         </Row>
       </div>
@@ -88,6 +95,10 @@ const enhancer = compose(
           path: `attandance/${props.uid}`,
           storeAs: 'attandance',
           queryParams: ['limitToLast=1']
+        },
+        {
+          path: `myplans/${props.uid}`,
+          storeAs: 'myplans',
         }
       ]
     )
@@ -95,7 +106,8 @@ const enhancer = compose(
   connect(
     ({ firebase }) => ({
       data: firebase.ordered.attandance,
-      uid: firebase.auth.uid
+      uid: firebase.auth.uid,
+      myplans: firebase.ordered.myplans,
     })
   )
 );
