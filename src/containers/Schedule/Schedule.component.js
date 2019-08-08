@@ -12,8 +12,11 @@ class Schedule extends React.Component {
         endOfWeek: moment().endOf('week').unix() * 1000,
     }
     render = () => {
-        if (!this.props.data) {
+        if (!this.props.data && !this.props.uid) {
             return <p>Loading...</p>
+        }
+        if (!this.props.data) {
+            return <p>No Data</p>
         }
         const { startOfWeek, endOfWeek } = this.state;
         return (
