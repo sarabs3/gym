@@ -39,11 +39,12 @@ class Home extends React.Component {
 
   render = () => {
     let status = false;
+    const { myplans } = this.props;
     if (this.props.data) {
       status = todayStatus(this.props.data[0].value.date);
     }
     const { skip } = this.state;
-    if (!this.props.myplans) {
+    if (!myplans) {
       return (
         <div className="exercies">
           <p>You haven't selected any plans yet.</p>
@@ -61,13 +62,13 @@ class Home extends React.Component {
                 <Link to='/dashboard/attandance'>Check Attandance</Link>
                 <MyPlan>
                   <List
-                    dataSource={weeks}
+                    dataSource={myplans}
                     renderItem={item => (
-                      <Link to={`dashboard/${item.id}`}>
+                      <Link to={`dashboard/${item.key}`}>
                         <List.Item>
                           <List.Item.Meta
-                            title={item.exercise}
-                            description={item.day}
+                            title={item.value}
+                            description={item.key}
                           />
                         </List.Item>
                       </Link>
@@ -84,7 +85,7 @@ class Home extends React.Component {
   }
 }
 
-const WeekSummary = (props) => (
+const HomePage = (props) => (
   <Fragment>
     <Home {...props} />
   </Fragment>
@@ -116,7 +117,7 @@ const enhancer = compose(
   )
 );
 // Attach the firebase data to the component.
-const WeekSummaryEnhancer = enhancer(WeekSummary);
+const HomePageEnhancer = enhancer(HomePage);
 
 
 // Container
@@ -124,4 +125,4 @@ export default connect(
   ({ firebase }) => ({
     uid: firebase.auth.uid
   })
-)(WeekSummaryEnhancer);
+)(HomePageEnhancer);
