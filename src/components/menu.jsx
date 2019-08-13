@@ -1,9 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Menu, Button } from 'antd';
 import {Link} from 'react-router-dom'
 import Media from "react-media";
 class Navigation extends React.Component {
     render() {
+        if (!this.props.auth) {
+            return (
+                <Menu
+                    mode="horizontal"
+                    theme="dark"
+                    style={{lineHeight: '64px'}}
+                    >
+                        <Menu.Item><Button><Link to='/login'>Login</Link></Button></Menu.Item>
+                </Menu>
+            )
+        }
         return (
             <React.Fragment>
                 <Media query="(max-width: 900px)">
@@ -37,5 +49,10 @@ class Navigation extends React.Component {
         )
     }
 }
-
+Navigation.propTypes = {
+    auth: PropTypes.bool,
+};
+Navigation.defaultProps = {
+    auth: true,
+};
 export default Navigation;

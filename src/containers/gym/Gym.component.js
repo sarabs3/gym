@@ -30,7 +30,7 @@ class Home extends React.Component {
   };
   
   gymResponse = (gymStatus) => {
-    // this.props.firebase.push(`attandance/${this.props.uid}`, { date: moment().unix()*1000, status: gymStatus });
+    this.props.firebase.push(`attandance/${this.props.uid}`, { date: moment().unix()*1000, status: gymStatus });
     this.props.history.push(`/dashboard/attandance/`);
   };
   skip = () => {
@@ -43,6 +43,13 @@ class Home extends React.Component {
       status = todayStatus(this.props.data[0].value.date);
     }
     const { skip } = this.state;
+    if (!this.props.myplans) {
+      return (
+        <div className="exercies">
+          <p>You haven't selected any plans yet.</p>
+        </div>
+      );
+    }
     return (
       <div className="exercies">
         <Row>
@@ -69,7 +76,7 @@ class Home extends React.Component {
 
                 </MyPlan>
                 </Fragment>
-              )}
+            )}
           </Col>
         </Row>
       </div>
@@ -104,7 +111,7 @@ const enhancer = compose(
     ({ firebase }) => ({
       data: firebase.ordered.attandance,
       myplans: firebase.ordered.myplans,
-      uid: firebase.auth.uid
+      uid: firebase.auth.uid,
     })
   )
 );

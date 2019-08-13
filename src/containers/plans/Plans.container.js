@@ -8,6 +8,7 @@ import CommonLayout from '../../layouts/common';
 
 class Plans extends React.Component {
     render = () => {
+        const { uid } = this.props;
         console.log('asd', this.props.plans);
         return (
             <CommonLayout>
@@ -17,7 +18,7 @@ class Plans extends React.Component {
                         renderItem={({value, key}) => {
                             return (
                                 <Link to={`/plans/${key}`}>
-                                    <List.Item actions={[<a>Edit</a>, <a>Delete</a>]}>
+                                    <List.Item actions={value.createdBy === uid ? [<a>Edit</a>, <a>Delete</a>] : []}>
                                         <List.Item.Meta
                                             title={value.name}
                                         />
