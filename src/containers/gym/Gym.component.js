@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import moment from 'moment';
+import { MyPlan } from "../myPlan";
 
 const weeks = [
   { day: 'Mon', exercise: 'Rest', id: 0 },
@@ -22,7 +23,7 @@ const weeks = [
 const todayStatus = (timestamp) => timestamp ? moment(timestamp).isBetween(moment().startOf('date'), moment().endOf('date')) : false;
 
 
-class WeekDays extends React.Component {
+class Home extends React.Component {
   state = {
     skip: false,
     today: moment().day(),
@@ -51,19 +52,22 @@ class WeekDays extends React.Component {
               <Fragment>
                 {!skip && <p className="notification">You already updated Today's status!</p>}
                 <Link to='/dashboard/attandance'>Check Attandance</Link>
-                <List
-                  dataSource={weeks}
-                  renderItem={item => (
-                    <Link to={`dashboard/${item.id}`}>
-                      <List.Item>
-                        <List.Item.Meta
-                          title={item.exercise}
-                          description={item.day}
-                        />
-                      </List.Item>
-                    </Link>
-                  )}
-                />
+                <MyPlan>
+                  <List
+                    dataSource={weeks}
+                    renderItem={item => (
+                      <Link to={`dashboard/${item.id}`}>
+                        <List.Item>
+                          <List.Item.Meta
+                            title={item.exercise}
+                            description={item.day}
+                          />
+                        </List.Item>
+                      </Link>
+                    )}
+                  />
+
+                </MyPlan>
                 </Fragment>
               )}
           </Col>
@@ -75,7 +79,7 @@ class WeekDays extends React.Component {
 
 const WeekSummary = (props) => (
   <Fragment>
-    <WeekDays {...props} />
+    <Home {...props} />
   </Fragment>
 );
 
@@ -88,6 +92,10 @@ const enhancer = compose(
           path: `attandance/${props.uid}`,
           storeAs: 'attandance',
           queryParams: ['limitToLast=1']
+        },
+        {
+          path: `myplans/${props.uid}`,
+          storeAs: 'myplans',
         }
       ]
     )
@@ -95,6 +103,7 @@ const enhancer = compose(
   connect(
     ({ firebase }) => ({
       data: firebase.ordered.attandance,
+      myplans: firebase.ordered.myplans,
       uid: firebase.auth.uid
     })
   )
